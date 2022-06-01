@@ -21,9 +21,7 @@ export const useItem = () => {
     const handleFetchCreate=(data)=>dispatch(ItemActionAdd.fetchListRequest(data))
     const handleFetchUpdate=(data)=>dispatch(ItemActionUpdate.fetchListRequest(data))
     const handleFetchSearch=(data)=>dispatch(ItemActionSearch.fetchListRequest(data))
-    const handleFetchAdd=(data)=>dispatch(AddData.AddDataRequest(data))
-
-    
+    const handleAddData=(data)=>dispatch(AddData.AddDataRequest(data))
     return {
         list,
         isFetching,
@@ -32,13 +30,13 @@ export const useItem = () => {
         totalPage,
         activePage,
         totalRecord,
-        
         handleFetchList,
         handleFetchDelete,
         handleFetchCreate,
         handleFetchUpdate,
         handleFetchSearch,
-        handleFetchAdd
+        handleAddData
+
 
     }
     

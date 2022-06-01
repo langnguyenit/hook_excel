@@ -1,5 +1,5 @@
 import { takeLatest, put } from 'redux-saga/effects'
-import { ItemAction,ItemActionDelete,ItemActionAdd,ItemActionUpdate ,ItemActionSearch} from '../actions'
+import { ItemAction,ItemActionDelete,ItemActionAdd,ItemActionUpdate ,ItemActionSearch,AddData} from '../actions'
 import { actionTypes } from '../container'
 import { itemApi } from '../api'
 import {LIMIT} from '../container/index'
@@ -63,16 +63,15 @@ function* handleFetchSearchItems({ payload}){
         yield put(ItemActionSearch.fetchListFailure(error))
     }
 }
-function* handleFetchAdd({ payload}){
+function* handleFetchAdd({payload}){
     try {
-        yield itemApi.fetchCreate(null,null,payload)
-        yield put(ItemActionAdd.fetchListSuccess())
+        yield itemApi.Add(null,null,payload)
+        yield put(AddData.AddDataSuccess())
          yield put(ItemAction.fetchListRequest({activePage:1}))    
      } catch (error) {
-         yield put(ItemActionAdd.fetchListFailure(error))
+         yield put(AddData.AddDataFailure(error))
      }
 }
-
 const itemSaga = [
     takeLatest(actionTypes.ItemTypes.FETCH_ITEMS_REQUEST, handleFetchListItems),
     takeLatest(actionTypes.ItemTypes.DELETE_ITEM_REQUEST, handleFetchDeleteItems),

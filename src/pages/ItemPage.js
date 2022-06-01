@@ -2,7 +2,6 @@ import React, {  useEffect  } from "react";
 import { useItem } from "../hooks";
 import { useState } from "react";
 import *as XLSX from 'xlsx'
-import * as FileSaver from "file-saver";
 export default function Home() {
   const {
     isError,
@@ -17,7 +16,7 @@ export default function Home() {
     handleFetchCreate,
     handleFetchUpdate,
     handleFetchSearch,
-    handleFetchAdd
+    handleAddData
   } = useItem();
   
 
@@ -26,8 +25,6 @@ export default function Home() {
   const [textSearch, setTextSearch] = useState("");
   const [file , setFile]=useState();
   useEffect(() => {
-    console.log('qqqqqqqqqqqqqqqq');
-    console.log('aaaaaa');
     handleFetchList({ activePage: 1 });
   }, []);
 
@@ -100,7 +97,7 @@ console.log(totalRecord.length,"du lieu vao")
       </div>
       <div>
         <input onChange={(e) => setName(e.target.value)} value={name} />
-        <button onClick={() => handleFetchAdd({ name: name }, setName(""))}>
+        <button onClick={() => handleAddData({ name: name }, setName(""))}>
           ADD
         </button>
         <button onClick={() => handleFetchUpdate({ name: name, id: id })}>

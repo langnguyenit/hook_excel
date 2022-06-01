@@ -42,7 +42,7 @@ const API_SCHEME = {
         SEARCH:{
             url: `${BASE_URL}/search`,
             method: METHOD.GET
-        },ADD: {
+        },ADD:{
             url: `${BASE_URL}/add`,
             method: METHOD.POST
         },
